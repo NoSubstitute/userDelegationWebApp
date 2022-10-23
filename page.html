@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>userDelegation WebApp</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <?!= include("page-css"); ?>
+  </head>
+  <body>
+  <div class="container">
+
+    <h4>userDelegation - Visa och hantera Gmail-delegater</h4>
+    <h6 style="color:grey">En sökning/ändring tar några sekunder, och resultatet visas nedan.</h6>
+    <h6>Skriv in epostadressen för kontot du vill hantera, och eventuell adress du vill lägga till/ta bort.</h6>
+    <div class="row">
+      <div class="input-field col s4">
+      <input placeholder="Delegerad adress" type="text" id="idBoxEmail" class="card-panel #f5f5f5 grey lighten-4 validate" onkeyup="EnableDisableList(this)"><button class="waves-effect waves-light btn-small" id="btnListDelegates" disabled="disabled">Lista delegater</button></div>
+      <div class="input-field col s4">
+      <input placeholder="Delegat du vill lägga till/ta bort" type="text" id="idDelegate" class="card-panel #f5f5f5 grey lighten-4" onkeyup="EnableDisable(this)"><button class="waves-effect waves-light blue btn-small" id="btnAddDelegate" disabled="disabled">Lägg till</button>   <button class="waves-effect waves-light red btn-small" id="btnDeleteDelegate" disabled="disabled">Ta bort</button></div>
+    </div>
+
+    <h4>Resultat <button class="waves-effect waves-light btn-small" id="clearResults">Rensa</button></h4>
+    <h6 style="color:grey">Du måste skriva fullständiga epostadresser.<br><i>förnamn.efternamn@kunskapsskolan.se</i></h6>
+
+        <table>
+          <thead>
+          <tr>
+              <th><h6>Resultat</h6></th>
+          </tr>
+          </thead>
+          <tbody id="idRESULT">
+          </tbody>
+        </table>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<?!= include("page-js"); ?>
+
+  </body>
+</html>
