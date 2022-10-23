@@ -1,8 +1,4 @@
 /**
- * @OnlyCurrentDoc
- */
-
-/**
  * This file is for keeping service account secrets, and is excluded in GasHub when I sync to/from github.
  * 
  * You need to put your own service account credentials here.
