@@ -1,5 +1,5 @@
 # userDelegationWebApp
-Manage Gmail Delegates in a web app - List, Add &amp; Remove delegates
+Manage Gmail Delegates in a web app - List, Add & Remove delegates
 
 [Copy this template](https://script.google.com/d/1VKtyhJyTBGaDZ3SAovVIUiVIM4c8SGZFlLQLDLI65gQdqQjd5frMMjem/edit) to get a copy of the Google Apps Script.
 
