@@ -1,32 +1,27 @@
 <script>
   document.getElementById('idRESULT').readOnly = true;
 
-  function EnableDisableList(idBoxEmail) {
+  function EnableDisable() {
         //Reference the Button.
         var btnListDelegates = document.getElementById("btnListDelegates");
-        //Verify the TextBox value.
-        if (idBoxEmail.value.trim() != "") {
-            //Enable the TextBox when TextBox has value.
-            btnListDelegates.disabled = false;
-        } else {
-            //Disable the TextBox when TextBox is empty.
-            btnListDelegates.disabled = true;
-        }
-    };
-
-  function EnableDisable(idDelegate) {
-        //Reference the Button.
         var btnAddDelegate = document.getElementById("btnAddDelegate");
         var btnDeleteDelegate = document.getElementById("btnDeleteDelegate");
         //Verify the TextBox value.
-        if (idDelegate.value.trim() != "") {
-            //Enable the TextBox when TextBox has value.
+        if (idDelegate.value.trim() != "" && idBoxEmail.value.trim() != "") {
+            //Enable all buttons when both TextBoxes have value.
+            btnListDelegates.disabled = false;
             btnAddDelegate.disabled = false;
             btnDeleteDelegate.disabled = false;
-        } else {
-            //Disable the TextBox when TextBox is empty.
+        } else if (idBoxEmail.value.trim() != "") {
+            //Enable only the list button when idBoxEmail has value.
+            btnListDelegates.disabled = false;
             btnAddDelegate.disabled = true;
             btnDeleteDelegate.disabled = true;
+          } else {
+            //Disable all buttons when all TextBox is empty.
+            btnAddDelegate.disabled = true;
+            btnDeleteDelegate.disabled = true;
+            btnListDelegates.disabled = true;
         }
     };
 
