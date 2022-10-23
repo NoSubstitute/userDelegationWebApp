@@ -1,20 +1,13 @@
 /**
  * This process works and gives relevant feedback to the user when the process fails.
- * I have disabled all logging to console, but keeping it in the code, for easy debugging in the future.
  */
 
 function createGmailDelegate(getBoxEmail, uname) {
   // Get User/Operator Info
   var userEmail = Session.getActiveUser().getEmail();
-  // console.log("userEmail: " + userEmail);
-  // Grab usernames from the input, lines below is for testing here in the editor
-  // var getBoxEmail = "sebcala@kunskapsskolan.se";
-  // var uname = "kini@kunskapsskolan.se";
-  // var uname = "gafe-task-force@kunskapsskolan.se";
+  // Grab usernames from the input
   var boxEmail = getBoxEmail;
-  // console.log("getBoxEmail: " + getBoxEmail);
   var delegate = uname;
-  // console.log("delegate: " + uname);
   try {
     // Check to see if userEmail has service account access to boxEmail
     var service = getCreateDelegationService_(boxEmail);
@@ -45,23 +38,17 @@ function createGmailDelegate(getBoxEmail, uname) {
       var invalidDelegate = "Invalid delegate";
       if (checkResponse.includes(acceptedStatus)) {
         // List delegation to the Log sheet
-        // console.log("SUCCESSFUL DELEGATION - Delegated " + boxEmail + " to " + delegate);
         return ("SUCCESSFUL DELEGATION - Delegated " + boxEmail + " to " + delegate);
         // List delegates to the Delegates sheet
       } else if (checkResponse.includes(alreadyExists)) {
-        // console.log("FAILED DELEGATION - " + delegate + " is already a delegate of " + boxEmail);
         return ("FAILED DELEGATION - " + delegate + " is already a delegate of " + boxEmail);
       } else if (checkResponse.includes(missingDelegateEmail)) {
-        // console.log("FAILED DELEGATION - It seems you forgot to supply a new delegate for " + boxEmail);
         return ("FAILED DELEGATION - It seems you forgot to supply a new delegate for " + boxEmail);
       } else if (checkResponse.includes(delegateSameAsboxEmail)) {
-        // console.log("FAILED DELEGATION - Can't delegate to same account. Check spelling of " + boxEmail + " and " + delegate);
         return ("FAILED DELEGATION - Can't delegate to same account. Check spelling of " + boxEmail + " and " + delegate);
       } else if (checkResponse.includes(invalidDelegate)) {
-        // console.log("FAILED DELEGATION - It seems " + delegate + " is invalid. Check the spelling");
         return ("FAILED DELEGATION - It seems " + delegate + " is invalid. Check the spelling");
       } else {
-        // console.log("FAILED DELEGATION - Failed to delegate " + boxEmail + " to " + delegate);
         return ("FAILED DELEGATION - Failed to delegate " + boxEmail + " to " + delegate);
       }
     } else {
@@ -72,19 +59,15 @@ function createGmailDelegate(getBoxEmail, uname) {
       var errorInvalidRequest = "invalid_request";
       var errorInvalidGrant = "invalid_grant";
       if (checkElse.includes(errorInvalidRequest)) {
-        // console.log("FAILED DELEGATION - Invalid Request - " + boxEmail + " is invalid - check spelling");
         return ("FAILED DELEGATION - Invalid Request - " + boxEmail + " is invalid - check spelling");
       } else if (checkElse.includes(errorInvalidGrant)) {
-        // console.log("FAILED DELEGATION - Invalid Grant - " + boxEmail + " is invalid - check spelling");
         return ("FAILED DELEGATION - Invalid Grant - " + boxEmail + " is invalid - check spelling");
       }
     }
     // If the create fails for some unknown reason, log the error.
   } catch (err) {
-    // console.log("FAIL - " + err);
     return ("FAIL - " + err);
   }
-  // }
 }
 
 /**

@@ -34,36 +34,27 @@
         function fetchDelegates(){
         document.getElementById("idRESULT").innerHTML = "";
         var getBoxEmail = document.getElementById("idBoxEmail").value;
-        // console.log("fetchDelegates: ",getBoxEmail);
         google.script.run
         .withSuccessHandler(printDelegates)
         .listGmailDelegate(getBoxEmail);
-        // document.getElementById("idBoxEmail").value = "";
     }
     
     window.printDelegates = function(DELEGATES) {
-    // console.log("DELEGATES: ",DELEGATES);
     var getBoxEmail = document.getElementById("idBoxEmail").value;
     var checking = Array.isArray(DELEGATES);
-    // console.log(checking)
     if (checking === true){
-    // console.log("DELEGATES is Array: ",DELEGATES[0],DELEGATES[1]);
     var list0 = DELEGATES[0].delegates;
-    // console.log("list0: ",list0);
     for (i=0; i<list0.length; i++) {
         value1=list0[i].delegateEmail;
-        // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
-      html+='<tr><td>' + getBoxEmail + ' är delegerad till '
+      html+='<tr><td>' + getBoxEmail + ' is delegated to '
       + value1 + '</td></tr>' ;
       html+='</table>' ;
       var myTable=document.getElementById("idRESULT"); 
       myTable.insertAdjacentHTML("beforeend", html);
       }
       } else {
-      // console.log("DELEGATES is not an Array: ",DELEGATES);
       value1=DELEGATES;
-      // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
       html+='<tr><td>' + value1 + '</td></tr>' ;
       html+='</table>' ;
@@ -76,38 +67,28 @@
     function addUserDelegate(){
         document.getElementById("idRESULT").innerHTML = "";
         var getBoxEmail = document.getElementById("idBoxEmail").value;
-        // console.log("getBoxEmail: ",getBoxEmail);
         var uname = document.getElementById("idDelegate").value;
-        // console.log("uname: ",uname);
         google.script.run
         .withSuccessHandler(addDelegates)
         .createGmailDelegate(getBoxEmail,uname);
-        // document.getElementById("idDelegate").value = "";
     }
 
     window.addDelegates = function(addUD) {
-    // console.log("addUD: ",addUD);
     var getBoxEmail = document.getElementById("idBoxEmail").value;
     var checking = Array.isArray(addUD);
-    // console.log(checking)
     if (checking === true){
-    // console.log("addUD is Array: ",addUD[0],addUD[1]);
     var list0 = addUD[0].delegates;
-    // console.log("list0: ",list0);
     for (i=0; i<list0.length; i++) {
         value1=list0[i].delegateEmail;
-        // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
-      html+='<tr><td>' + getBoxEmail + ' är delegerad till '
+      html+='<tr><td>' + getBoxEmail + ' is now delegated to '
       + value1 + '</td></tr>' ;
       html+='</table>' ;
       var myTable=document.getElementById("idRESULT"); 
       myTable.insertAdjacentHTML("beforeend", html);
       }
       } else {
-      // console.log("addUD is not an Array: ",addUD);
       value1=addUD;
-      // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
       html+='<tr><td>' + value1 + '</td></tr>' ;
       html+='</table>' ;
@@ -120,38 +101,28 @@
     function deleteUserDelegate(){
         document.getElementById("idRESULT").innerHTML = "";
         var getBoxEmail = document.getElementById("idBoxEmail").value;
-        // console.log("getBoxEmail: ",getBoxEmail);
         var uname = document.getElementById("idDelegate").value;
-        // console.log("uname: ",uname);
         google.script.run
         .withSuccessHandler(deleteDelegates)
         .deleteGmailDelegate(getBoxEmail,uname);
-        // document.getElementById("idDelegate").value = "";
     }
 
     window.deleteDelegates = function(deleteUD) {
-          // console.log("deleteUD: ",deleteUD);
     var getBoxEmail = document.getElementById("idBoxEmail").value;
     var checking = Array.isArray(deleteUD);
-    // console.log(checking)
     if (checking === true){
-    // console.log("deleteUD is Array: ",deleteUD[0],deleteUD[1]);
     var list0 = deleteUD[0].delegates;
-    // console.log("list0: ",list0);
     for (i=0; i<list0.length; i++) {
         value1=list0[i].delegateEmail;
-        // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
-      html+='<tr><td>' + getBoxEmail + ' är inte längre delegerad till '
+      html+='<tr><td>' + getBoxEmail + ' is no longer delegated to '
       + value1 + '</td></tr>' ;
       html+='</table>' ;
       var myTable=document.getElementById("idRESULT"); 
       myTable.insertAdjacentHTML("beforeend", html);
       }
       } else {
-      // console.log("deleteUD is not an Array: ",deleteUD);
       value1=deleteUD;
-      // console.log(value1);
       let html='<style>td,th{border:0px solid black;}</style><table>' ;
       html+='<tr><td>' + value1 + '</td></tr>' ;
       html+='</table>' ;

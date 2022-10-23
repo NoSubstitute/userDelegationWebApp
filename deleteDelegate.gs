@@ -1,20 +1,13 @@
 /**
  * This process works and gives relevant feedback to the user when the process fails.
- * I have disabled all logging to console, but keeping it in the code, for easy debugging in the future.
  */
 
 function deleteGmailDelegate(getBoxEmail, uname) {
   // Get User/Operator Info
   var userEmail = Session.getActiveUser().getEmail();
-  // console.log("userEmail: " + userEmail);
-  // Grab usernames from the input, lines below is for testing here in the editor
-  // var getBoxEmail = "sebcala@kunskapsskolan.se";
-  // var uname = "kini@kunskapsskolan.se";
-  // var uname = "";
+  // Grab usernames from the input
   var boxEmail = getBoxEmail;
-  // console.log("getBoxEmail: " + getBoxEmail);
   var delegatee = uname;
-  // console.log("delegatee: " + uname);
   // Try to update the user with given data, and log the result.
   try {
     // Check to see if userEmail has service account access to boxEmail
@@ -36,13 +29,10 @@ function deleteGmailDelegate(getBoxEmail, uname) {
       // Logging each code inside their own loop to avoid unnecessary logging
       var responsecode = response.getResponseCode();
       if (responsecode == "204") {
-        // console.log("SUCCESSFUL DELETION - Deleted " + delegatee + " from " + boxEmail);
         return ("SUCCESSFUL DELETION - Deleted " + delegatee + " from " + boxEmail);
       } else if (responsecode == "404") {
-        // console.log("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - check spelling of delegate");
         return ("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - check spelling of delegate");
       } else {
-        // console.log("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - check spellings");
         return ("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - check spellings");
       }
     } else {
@@ -53,14 +43,11 @@ function deleteGmailDelegate(getBoxEmail, uname) {
       var errorInvalidRequest = "invalid_request";
       var errorInvalidGrant = "invalid_grant";
       if (checkElse.includes(errorInvalidRequest)) {
-        // console.log("FAILED DELETION - Invalid Request - " + boxEmail + " is invalid - check spelling");
         return ("FAILED DELETION - Invalid Request - " + boxEmail + " is invalid - check spelling");
       } else if (checkElse.includes(errorInvalidGrant)) {
-        // console.log("FAILED DELETION - Invalid Grant - " + boxEmail + " is invalid - check spelling");
         return ("FAILED DELETION - Invalid Grant - " + boxEmail + " is invalid - check spelling");
       }
       else {
-        // console.log("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - unknown reason");
         return ("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - unknown reason");
       }
     }
@@ -69,7 +56,6 @@ function deleteGmailDelegate(getBoxEmail, uname) {
     if (!(err instanceof SyntaxError)) {
       throw err; // rethrow (I don't know how to deal with this error, even if it rarely happens.)
     }
-    // else if (err instanceof SyntaxError) {
     else {
       // Deal with the error message from the API
       var checkErrMessage = err.message;
@@ -78,16 +64,12 @@ function deleteGmailDelegate(getBoxEmail, uname) {
       var errorUnexpectedTokenE = "Unexpected token: E";
       var errorUnexpectedToken = "Unexpected token: <";
       if (checkErr.includes(errorInvalidArgument)) {
-        // console.log("FAILED DELETION - Delegate " + delegatee + " is invalid - check spelling");
         return ("FAILED DELETION - Delegate " + delegatee + " is invalid - check spelling");
       } else if (checkErr.includes(errorUnexpectedTokenE)) {
-        // console.log("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - some other unknown reason?");
         return ("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - some other unknown reason?");
       } else if (checkErr.includes(errorUnexpectedToken)) {
-        // console.log("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - Did you supply a delegate to remove?");
         return ("FAILED DELETION - Failed to delete " + delegatee + " from " + boxEmail + " - Did you supply a delegate to remove?");
       } else {
-        // console.log("FAILED DELETION - Either " + boxEmail + " or " + delegatee + " is invalid - check spelling");
         return ("FAILED DELETION - Either " + boxEmail + " or " + delegatee + " is invalid - check spelling");
       }
     }
