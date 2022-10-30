@@ -21,7 +21,9 @@ secrets.gs needs secrets from a service account with domain wide access to the n
 
 [Read the wiki](https://github.com/NoSubstitute/userDelegationWebApp/wiki) how you set that up.
 
-The secrets.gs in the repo will never have any secrets, as that would give any user acess to my domain. Which is why you also shouldn't post your secrets publicly, and only give access to this sheet and script to trusted admins. Even if that's a given, it never hurts to remind people. :-)
+The secrets.gs in the repo will never have any secrets, as that would give any user acess to my domain. Which is why you also shouldn't post your secrets publicly, and only give access to this web app to trusted admins. Even if that's a given, it never hurts to remind people. :-)
+
+The web app has built-in checks to restrict access to only a specified user, and when using a password in the URL.
 
 [PRIVACY POLICY](https://tools.no-substitute.com/pp)
 
