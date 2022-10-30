@@ -3,15 +3,18 @@ Manage Gmail Delegates in a web app - List, Add & Remove delegates
 
 [Copy this template](https://script.google.com/d/1VKtyhJyTBGaDZ3SAovVIUiVIM4c8SGZFlLQLDLI65gQdqQjd5frMMjem/edit) to get a copy of the Google Apps Script.
 
-Or create your own script and copy-paste all the code into the necessary files.
+Or create your own script and copy-paste all the code into the necessary files.<br>
+Then read [How to make it work](https://github.com/NoSubstitute/userDelegationWebApp/edit/main/README.md#how-to-make-it-work---yes-this-is-absolutely-necessary-to-do-first).
 
 ## Use the _userDelegation web app_ to list, add and remove delegates.
 
 Add inbox account to _list_ delegates.<br>
 Add a user in the right input field to which you wish to _Add_ or _Remove_ access to the inbox.<br>
-Then press the relevant action button.
+Then press the relevant action button.<br><br>
+<img width="600" alt="userDelegation-main" src="https://user-images.githubusercontent.com/12572734/198885356-5ac5604b-7e4f-419f-b039-3806ccbea7f5.png">
 
-The result of each action will be shown on the bottom half of the page.<br>
+The result of each action will be shown on the bottom half of the page.<br><br>
+<img width="598" alt="userDelegation-errors" src="https://user-images.githubusercontent.com/12572734/198885370-efc68fb1-5cb9-41e2-af9a-43c2005716b6.png">
 
 ## How to make it work - Yes, this is absolutely necessary to do first.
 secrets.gs needs secrets from a service account with domain wide access to the necessary scopes.
