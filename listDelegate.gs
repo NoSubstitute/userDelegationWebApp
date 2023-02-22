@@ -66,6 +66,7 @@ function listGmailDelegate(getBoxEmail) {
       return (boxEmail + " is not delegated");
     }
   } finally {
+    PropertiesService.getScriptProperties().deleteProperty("oauth2.Gmail:"+boxEmail)
   }
 }
 
