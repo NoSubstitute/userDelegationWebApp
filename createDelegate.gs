@@ -67,7 +67,6 @@ function createGmailDelegate(getBoxEmail, uname) {
     // If the create fails for some unknown reason, log the error.
   } catch (err) {
     return ("FAIL - " + err);
-  }
   } finally {
     // Now the script cleans up the properties after each run, so as to avoid Properties Storage Quota errors
     PropertiesService.getScriptProperties().deleteProperty("oauth2.Gmail:"+boxEmail)
