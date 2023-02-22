@@ -43,7 +43,7 @@ function listGmailDelegate(getBoxEmail) {
       var checkElse = checkElseError.toString();
       var errorInvalidRequest = "invalid_request";
       var errorInvalidGrant = "invalid_grant";
-      var errorFailedPrecondition = "FAILED_PRECONDITION":
+      var errorFailedPrecondition = "FAILED_PRECONDITION";
       // Check error message against the two known errors errorInvalidRequest & errorInvalidGrant and react accordingly
       if (checkElse.includes(errorInvalidRequest)) {
         return ("FAILED LIST Request - Failed to list delegates of " + boxEmail + " - check spelling");
